@@ -37,8 +37,8 @@ public class MemoryVacancyRepository implements VacancyRepository {
     }
 
     @Override
-    public void deleteById(int id) {
-        vacancies.remove(id);
+    public Optional<Vacancy> deleteById(int id) {
+        return Optional.ofNullable(vacancies.remove(id));
     }
 
     @Override
