@@ -9,15 +9,17 @@ public class Candidate {
     private String name;
     private String description;
     private LocalDateTime createTime = LocalDateTime.now();
+    private int cityId;
 
     public Candidate() {
     }
 
-    public Candidate(int id, String name, String description, LocalDateTime createTime) {
+    public Candidate(int id, String name, String description, LocalDateTime createTime, int cityId) {
         this.id = id;
         this.name = name;
         this.description = description;
         this.createTime = createTime;
+        this.cityId = cityId;
     }
 
     public int getId() {
@@ -50,6 +52,14 @@ public class Candidate {
 
     public void setCreateTime(LocalDateTime createTime) {
         this.createTime = createTime;
+    }
+
+    public int getCityId() {
+        return cityId;
+    }
+
+    public void setCityId(int cityId) {
+        this.cityId = cityId;
     }
 
     @Override
