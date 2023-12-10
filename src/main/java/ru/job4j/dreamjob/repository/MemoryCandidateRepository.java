@@ -32,8 +32,8 @@ public class MemoryCandidateRepository implements CandidateRepository {
     }
 
     @Override
-    public boolean deleteById(int id) {
-        return Optional.ofNullable(candidates.remove(id)).isPresent();
+    public void deleteById(int id) {
+        candidates.remove(id);
     }
 
     @Override
