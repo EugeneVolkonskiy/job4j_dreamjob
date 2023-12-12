@@ -4,14 +4,12 @@ import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 import org.sql2o.Sql2o;
-import org.sql2o.Sql2oException;
 import ru.job4j.dreamjob.configuration.DatasourceConfiguration;
 import ru.job4j.dreamjob.model.User;
 
 import java.util.Properties;
 
 import static org.assertj.core.api.Assertions.*;
-import static org.junit.jupiter.api.Assertions.assertThrows;
 
 class Sql2oUserRepositoryTest {
 
@@ -51,10 +49,10 @@ class Sql2oUserRepositoryTest {
     }
 
     @Test
-    public void whenSaveEqualMailThenGetException() {
+    public void whenSaveEqualMailThenGetEmpty() {
         sql2oUserRepository.save(new User(0, "test1@mail.ru", "name", "password"));
         User user2 = new User(0, "test1@mail.ru", "name", "password");
-        assertThrows(Sql2oException.class, () -> sql2oUserRepository.save(user2));
+        assertThat(sql2oUserRepository.save(user2)).isEmpty();
     }
 
     @Test
