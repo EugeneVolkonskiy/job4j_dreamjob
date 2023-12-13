@@ -34,12 +34,10 @@ public class UserController {
     }
 
     @PostMapping("/register")
-    public String register(@ModelAttribute User user, Model model) {
+    public String register(@ModelAttribute User user) {
             var savedUser = userService.save(user);
             if (savedUser.isEmpty()) {
-                String error = String.format("Пользователь с почтой %s уже существует", user.getEmail());
-                model.addAttribute("message", error);
-                return "errors/404";
+                return "users/register";
             }
             return "redirect:/vacancies";
     }
